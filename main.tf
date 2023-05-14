@@ -19,6 +19,14 @@ resource "aws_subnet" "dev-subnet-1" {
   }
 }
 
+output "dev-vpc-id" {
+  value = aws_vpc.development_vpc.id
+}
+
+output "dev-subnet-id" {
+  value = aws_subnet.dev-subnet-1.id
+}
+
 #data "aws_vpc" "existing-vpc" {
 #  default = true
 #}
