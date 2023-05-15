@@ -33,8 +33,8 @@ resource "aws_internet_gateway" "myapp-igw" {
   }
 }
 
-resource "aws_route_table" "myapp-route-table" {
-  vpc_id = aws_vpc.myapp-vpc.id
+resource "aws_default_route_table" "main-rtb" {
+  default_route_table_id = aws_vpc.myapp-vpc.default_route_table_id
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -42,7 +42,7 @@ resource "aws_route_table" "myapp-route-table" {
   }
 
   tags = {
-    Name: "${var.env_prefix}-rtb"
+    Name: "${var.env_prefix}-main-rtb"
   }
 }
 
